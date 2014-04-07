@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang='en' data-ng-app="kyteApp">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body ng-controller ="Ctrl1">
+    <div class="well">
+        <div class="container">
+
+
+            <div class="col-md-2">
+                <p>{{currentUser}}</p>
+                <div id="login" class="btn btn-default" ng-click="Login()">Login</div>
+                <div id="logout" class="btn btn-default" ng-click="Logout()">Logout</div><br />
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <h2>Kytes</h2><br />
+                <input type="text" ng-model="kyte" placeholder="Kyte" />
+
+                <div class="btn btn-primary" ng-click="sendKyte(kyte)"><span class="glyphicon glyphicon-envelope"></span></div>
+            </div>
+        </div>
+        </div>
+    <div class="container">
+        
+            <div class="col-md-4 column">
+                <h4 class="center-block">Kyte List</h4>
+                <table class="table table-responsive">
+                    <tr ng-repeat="(key, x) in gotKytes">
+                        <td>{{name}}</td>
+                        <td>{{x.Kyte}}</td>
+                        <td><button class="btn btn-danger" ng-click="deleteKyte(x.id)">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-md-4 col-md-offset-4">
+                <h4 class="center-block">Friends List</h4>
+                <table class="table table-responsive">
+                    <tr ng-repeat="friend in friends">
+                        <td>{{friend}}</td>
+                    </tr>
+                </table>
+            </div>
+       
+    </div>
+    <!-- =========== MODAL =============== -->
+    <div id="nameModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Welcome</h4>
+                </div>
+                <div class="modal-body">
+                    Enter Your Name: <input type="text" ng-model="userName" placeholder="name" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" ng-click="saveName(userName)">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script src="Scripts/jquery-1.9.0.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <script src="Zangular1.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.5/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.7.0/angularfire.js"></script>
+    <script src="https://cdn.firebase.com/js/simple-login/1.2.5/firebase-simple-login.js"></script>
+    <script type='text/javascript'
+            src='https://login.persona.org/include.js'>
+    </script>
+</body>
+</html>
